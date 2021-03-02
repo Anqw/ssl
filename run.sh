@@ -1,11 +1,15 @@
-#!/bin/bash
-#SBATCH -n 80
-#SBATCH --gres=gpu:v100:8
-#SBATCH --time=48:00:00
-#SBATCH --qos=deadline # possible values: short, normal, allgpus
-# nvidia-smi
-# hostname
-# python --version
+#!/usr/bin/env bash
+#SBATCH --job-name ssl # CHANGE this to a name of your choice
+#SBATCH --partition batch # equivalent to PBS batch
+#SBATCH --mail-type=ALL # NONE, BEGIN, END, FAIL, REQUEUE, ALL TIME_LIMIT, TIME$
+#SBATCH --mail-user=hujilin@cs.aau.dk # CHANGE THIS to your email address!
+#SBATCH --time 21-00:00:00 # Run 24 hours
+#SBATCH --qos=allgpus # possible values: short, normal, allgpus, 1gpulong
+#SBATCH --gres=gpu:2 # CHANGE this if you need more or less GPUs
+#SBATCH --nodelist=nv-ai-03.srv.aau.dk # CHANGE this to nodename of your choice$
+#SBATCH --mem=300G
+#SBATCH --cpus-per-gpu=6
+
 
 # sinfo
 #module load gcc/6.5.0-fxnktbs
